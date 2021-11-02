@@ -1,0 +1,37 @@
+
+.background{
+    width: 700px;
+    text-align: center;
+    margin: auto;
+    display: block;
+    background: #d9d9d9;
+}
+.main-heading{
+    margin-top: 80px;
+    font-size: xx-large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.sub-heading{
+    font-size: 25px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.form-text{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.loginform{
+    margin-bottom: 15px;
+    
+}
+.loginform-button{
+    color:darkcyan;
+    font-size: 25px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    cursor: pointer;
+    outline: none;
+}
+.loginform-control{
+    width: 200px;  
+    height: 30px;   
+    border-radius: 7px;  
+    padding-left: 7px;    
+}
