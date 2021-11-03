@@ -1,5 +1,6 @@
 <?php
     $s=false;
+    $pno=false;
     if($_SERVER["REQUEST_METHOD"]=="POST")
     {
         include 'partials/_dbconnect.php';
@@ -12,12 +13,25 @@
         $city=$_POST['city'];
         $balance=$_POST['balance'];
         $password=$_POST['password'];
+        $check="SELECT * FROM `user` WHERE `phone`='$phone'";
+        $r=mysqli_query($conn,$check);
+        $numc=mysqli_num_rows($r);
+        if($numc==0)
+        {
         //$sql ="INSERT INTO `DshHNFZcBN`. `user` ( `userid`,`firstname`, `lastname`, `age`, `gender`, `phone`, `email`, `city`,`date`) VALUES ( NULL,'$firstname', '$lastname', '$age', '$gender', '$phone', '$email', '$city', CURRENT_TIMESTAMP); "; 
         $sql="INSERT INTO `user` (`userid`, `firstname`, `lastname`, `age`, `gender`, `phone`, `email`, `city`, `date`,`balance`, `password`) VALUES (NULL,'$firstname', '$lastname', '$age', '$gender', '$phone', '$email', '$city', CURRENT_TIMESTAMP,'$balance', '$password');" ;
         $result=mysqli_query($conn,$sql);
         if($result){
             $s=true;
+            $s1="SELECT * FROM `user` WHERE `phone`='$phone'";
+            $result1=mysqli_query($conn,$s1);
+            $row = mysqli_fetch_assoc($result1);
+            $userid= $row['userid'] ;//user id of user
         }
+    }
+    else{
+        $pno=true;
+    }
     }
 ?>
 <!DOCTYPE html>
@@ -34,16 +48,23 @@
     <?php
         if($s)
         {
-            echo '<div class="alert">
-            <center>Account Created Succesfully
-            Your User Id is '. $userid .'</center>
-          </div>';
+            echo
+            'Account Created Succesfully
+            Your User Id is'.$userid;
+          
+        
         }
     ?>
     <div class="title">Registration</div>
     <div class="content">
     <form class="createUserform" method="post">
     <div class="user-details">
+        <?php
+        if($pno)
+        {
+            echo"phone number already exists";
+        }
+        ?>
         <div class="input-box">
             <span class="details">First Name</span>
             <input class="input" type="text" name="firstname" id="firstname" placeholder="Enter your first name" required>
