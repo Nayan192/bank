@@ -1,3 +1,4 @@
+
 <?php
     session_start();// isset checks if variable is set or not
     if(!isset($_SESSION['loggedin']) ||$_SESSION['loggedin']!=true){
@@ -55,21 +56,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!--form start-->
-    <form action="transferMoney.php" method="post">
-        <label><b>Benificiery user id</b> </label><br>
-        <input class="createUser-control" type="text" name="userid" id="userid"required><br><br>
-        <label><b>amount to be transfered</b> </label><br>
-        <input class="createUser-control" type="text" name="amount" id="amount"  required><br><br>
-        <button class="submit-button">SUBMIT</button>
-    </form>
-    <!--form ends-->
+    <link rel="stylesheet" type="text/css" href="css/createUser.css">
+    <title>Transfer Funds</title>
 </head>
 <body>
     
+<div class="container">
+    <div class="title">Transfer Money</div>
+    <div class="content">
+        <form action="transferMoney.php" method="post">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">Benificiery user id</span>
+                    <input class="input" type="text" name="userid" id="userid" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Amount to be transfered</span>
+                    <input class="input" type="text" type="text" name="amount" id="amount" required>
+                </div>
+                <button class="submit" type="submit">SUBMIT</button>
+            </div>
+        </form>
+    </div>
+</div>    
 </body>
 </html>
