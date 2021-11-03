@@ -30,7 +30,15 @@
           $tresult2=mysqli_query($conn,$transferMoney2);
           if($tresult2)
           {
-              echo "money transfer success";
+              $sql4="INSERT INTO `tranferhistory` (`buserid`, `amount`, `balance`, `owner`) VALUES ('$userid', '$amount', '$newbalance3', '$owner');";//insert into new balance table
+              $result4=mysqli_query($conn,$sql4);
+              if($result4)
+              {
+                  echo "money transfered succesfull";
+              }
+              else{
+                  echo " error";
+              }
           }
           else{
               echo "some error";
