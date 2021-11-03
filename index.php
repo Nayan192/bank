@@ -1,5 +1,6 @@
 <?php
     $login=false;
+    $notUserlogin=false;
     if($_SERVER["REQUEST_METHOD"]=="POST")
     {
         include 'partials/_dbconnect.php';
@@ -15,7 +16,9 @@
             $_SESSION['userid']=$userid;
             header("location:homepage.php");
         }
-
+        else {
+            $notUserlogin=true;
+        }
     }
 ?>
 
@@ -25,22 +28,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
     <link rel="stylesheet" type="text/css" href="css/login.css">
     <title>login page</title>
 </head>
-<body class="body-background">
-    <div class="background">
-        <h1 class="main-heading">Welcome to ----- bank</h1>
-        <h2 class="sub-heading">Login to your account</h2><br>
-        <form class="loginform" action="index.php" method="post">
-            <label><b>USER ID &nbsp&nbsp&nbsp&nbsp&nbsp</b> </label>  
-            <input type="text" class="loginform-control" name="userid" id="userid" required><br><br></p>
-            <label><b>PASSWORD &nbsp</b></label> 
-            <input type="password" class="loginform-control" name="password" id="password" required><br><br></p>
-            <button class="loginform-button" type="submit" >LOGIN</button><br><br>
-            <a href="createUser.php">Create a new account</a>
-            <a href="allusers.php">show all users</a>
+<body>
+        <form class="login-form" action="index.php" method="post">
+        <?php
+        if($notUserlogin)
+        {
+            echo '<div class="alert">
+            <center>Wrong User ID or Password</center>
+          </div>';
+        }
+        ?>
+        <div class="form">
+        <center>
+        <div class="title">Welcome</div>
+        <div class="subtitle">Login to your account</div>
+        </center>
+        <div class="input-container ic1">
+            <input type="text" class="input" name="userid" id="userid" placeholder=" " required>
+            <div class="cut"></div>
+            <label for="userid" class="placeholder">USER ID</label>  
+        </div>
+        <div class="input-container ic2">
+            <input type="password" class="input" name="password" id="password" placeholder=" " required>   
+            <div class="cut"></div>
+            <label for="password" class="placeholder">PASSWORD</label> 
+            <a href="forgotPassword.php" class="fpw">Forgot Password?</a>
+        </div>
+            <button class="submit" type="submit" >LOGIN</button><br><br>
+            <center><p class="subtitle">OR</p><center>
+            <a href="createUser.php" class="register">Register Here</a>
+        </div>
         </form>
-    </div>
 </body>
 </html>
