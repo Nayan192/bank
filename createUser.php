@@ -18,7 +18,6 @@
         if($result){
             $s=true;
         }
-        else echo "UNSUCCESFULL";
     }
 ?>
 <!DOCTYPE html>
@@ -31,37 +30,65 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="background">
-    <h1 class="mainheading">CREATE NEW USER</h1><br>
+    <div class="container">
     <?php
-    if($s){   
-       echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-     <strong>sucess</strong> Your account is now created and You can now login
-     <a href="index.php">NEXT</a>
-    </div>';
-    }
+        if($s)
+        {
+            echo '<div class="alert">
+            <center>Account Created Succesfully
+            Your User Id is '. $userid .'</center>
+          </div>';
+        }
     ?>
+    <div class="title">Registration</div>
+    <div class="content">
     <form class="createUserform" method="post">
-        <label><b>First Name</b> </label><br>
-        <input class="createUser-control" type="text" name="firstname" id="firstname"required><br><br>
-        <label><b>Last Name</b> </label><br>
-        <input class="createUser-control" type="text" name="lastname" id="lastname"  required><br><br>
-        <label><b>Age</b> </label><br>
-        <input class="createUser-control" type="age" name="age" id="age"  required><br><br>
-        <label><b>Gender</b> </label><br>
-        <input class="createUser-control" type="text" name="gender" id="gender"  required><br><br>
-        <label><b>Phone Number</b> </label><br>
-        <input class="createUser-control" type="phone" name="phone" id="phone" required><br><br>
-        <label><b>Email</b> </label><br>
-        <input class="createUser-control" type="email" name="email" id="email" required><br><br>
-        <label><b>City </b> </label><br>
-        <input class="createUser-control" type="city" name="city" id="city" required><br><br>
-        <label><b>Balance </b> </label><br>
-        <input class="createUser-control" type="balance" name="balance" id="balance" required><br><br>
-        <label><b>Password </b> </label><br>
-        <input class="createUser-control" type="password" name="password" id="password" required><br><br>
-        <button class="submit-button">SUBMIT</button>
+    <div class="user-details">
+        <div class="input-box">
+            <span class="details">First Name</span>
+            <input class="input" type="text" name="firstname" id="firstname" placeholder="Enter your first name" required>
+        </div>
+        <div class="input-box">
+            <span class="details">Last Name</span>
+            <input class="input" type="text" name="lastname" id="lastname" placeholder="Enter your last name"  required>
+        </div>
+        <div class="input-box">
+            <span class="details">Age</span>
+            <input class="input" type="age" name="age" id="age" placeholder="Enter your age" required>
+        </div>
+        <div class="input-box">
+            <span class="details">Gender</span>
+            <input class="input" type="gender" name="gender" id="gender" placeholder="Enter your gender" required>
+        </div>
+         <div class="input-box">
+             <span class="details">Phone</span>
+            <input class="input" type="phone" name="phone" id="phone" placeholder="Enter your phone" required>
+        </div>
+        <div class="input-box">
+            <span class="details">E-Mail</span>
+            <input class="input" type="email" name="email" id="email" placeholder="Enter your email" required>   
+        </div>
+        <div class="input-box">
+            <span class="details">City</span>
+            <input class="input" type="city" name="city" id="city" placeholder="Enter your city" required>
+        </div>
+        <div class="input-box">
+            <span class="details">Balance</span>
+            <input class="input" type="balance" name="balance" id="balance" placeholder="Enter your balance" required>
+        </div>
+        <div class="input-box">
+            <span class="details">Password</span>
+            <input class="input" type="password" name="password" id="password" placeholder="Enter your password" required> 
+        </div>
+       <button class="submit" type="submit">SUBMIT</button>
+    </div>
     </form>
+</div>
 </div>
 </body>
 </html>
+
+
+
+
+

@@ -24,7 +24,7 @@
             <th><button><a href= "transferMoney.php">Fund Tranfer</a></button></th>
             <th><button><a href="allusers.php">Registered Users</a></button></th>
             <th><button><a href="transferHistory.php">Transfer History</a></button></th>
-            <th><button><a href="addmoney.php">Add Money</a></button></th>
+            <th><button><a href="addmoney.php">Add/Withdraw Money</a></button></th>
         </table>
     </div>
     welcome-<?php echo $_SESSION['userid']?>
