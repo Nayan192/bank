@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +9,41 @@
     <title>Document</title>
 </head>
 <body>
-<?php require 'partials/navbar.php'?>
+ <?php require 'partials/navbar.php'?>
     <h1>Account Info</h1>
+    <?php
+   session_start();
+   include 'partials/_dbconnect.php';
+   $owner=$_SESSION['userid'];//user id of owner of account
+   $sql="SELECT * FROM `user` WHERE `userid`='$owner'";
+   $result=mysqli_query($conn,$sql);
+   $num=mysqli_num_rows($result);
+   if($num==1)
+   {
+   $row = mysqli_fetch_assoc($result);
+   echo $row['userid'];
+   echo "<br>";
+   echo $row['firstname'];
+   echo "<br>";
+   echo $row['lastname'];
+   echo "<br>";
+   echo $row['age'];
+   echo "<br>";
+   echo $row['gender'];
+   echo "<br>";
+   echo $row['phone'];
+   echo "<br>";
+   echo $row['email'];
+   echo "<br>";
+   echo $row['city'];
+   echo "<br>";
+   echo $row['balance'];
+   }
+   else{
+       echo "unexpected error";
+   }
+
+
+?>
 </body>
 </html>
