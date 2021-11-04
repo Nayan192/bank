@@ -27,15 +27,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <title>Reset Password</title>
 </head>
 <body>
 <form action="forgotpassword.php" method="post">
-        <label><b>enter your user user id</b> </label><br>
-        <input class="createUser-control" type="text" name="userid" id="userid"required><br><br>
-        <label><b>new password</b> </label><br>
-        <input class="createUser-control" type="text" name="password" id="password"  required><br><br>
-        <button class="submit-button">SUBMIT</button>
+    <div class="form">
+            <center>
+            <div class="title">Reset Password</div>
+            </center>
+            <div class="input-container ic1">
+                <input type="text" class="input" name="userid" id="userid" placeholder=" " required>
+                <div class="cut"></div>
+                <label for="userid" class="placeholder">USER ID</label>  
+            </div>
+            <div class="input-container ic2">
+                <input type="password" class="input" name="password" id="password" placeholder=" " required>   
+                <div class="cut"></div>
+                <label for="password" class="placeholder">PASSWORD</label> 
+            </div>
+                <button class="submit" type="submit" >RESET</button><br><br>
+            </div>
     </form>
 </body>
 </html>
