@@ -19,6 +19,7 @@
     <title>Transfer history</title>
 </head>
 <body>
+<?php require 'partials/navbar.php'?>
 <div class="container">
         <h2 class="text-center pt-4" style="color : black;">Transfer History</h2>
        <div class="table-responsive-sm">

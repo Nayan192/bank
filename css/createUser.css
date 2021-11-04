@@ -22,13 +22,12 @@ body{
   box-shadow: 0 5px 10px rgba(0,0,0,0.15);
 }
 .alert {
-  border-radius:10px ;
-padding: 20px;
-background-color: #970a00; /* Red */
-color: white;
-margin-bottom: 15px;
-}
-
+      border-radius:10px ;
+    padding: 20px;
+    background-color: #970a00; /* Red */
+    color: white;
+    margin-bottom: 15px;
+  }
 .container .title{
   font-size: 25px;
   font-weight: 500;

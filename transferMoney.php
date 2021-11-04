@@ -1,11 +1,13 @@
-
 <?php
     session_start();// isset checks if variable is set or not
     if(!isset($_SESSION['loggedin']) ||$_SESSION['loggedin']!=true){
         header("location:index.php");
         exit;
     }
-    
+    $success=false;
+    $error=false;
+    $insuff=false;
+    $usernf=false;
     if($_SERVER["REQUEST_METHOD"]=="POST")
     {
         include 'partials/_dbconnect.php';
@@ -14,6 +16,9 @@
         $owner=$_SESSION['userid'];//user id of owner of account
         $sql="SELECT * FROM `user` WHERE `userid`='$userid'";
         $result=mysqli_query($conn,$sql);
+        $num2=mysqli_num_rows($result);
+        if($num2==1)
+        {
         $row = mysqli_fetch_assoc($result);
         $currbalance= $row['balance'] ;//current balance of benefeciary
         $newbalance=$currbalance+$amount;//new balance of benefeciary 
@@ -37,22 +42,27 @@
               $result4=mysqli_query($conn,$sql4);
               if($result4)
               {
-                  echo "money transfered succesfull";
+                  $success=true;
               }
               else{
-                  echo " error";
+                  $error =true;
               }
           }
-          else{
-              echo "some error";
-          }
+            else{
+              $error=true;
+                }
         }
         
         else {
-            echo "User not found or insufficient balance ";
+            $insuff=true;
         }
         
     }
+    else
+    {
+        $usernf=true;
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -67,20 +77,35 @@
 </head>
 <body> 
 <div class="container">
-<!-- <?php
-            if($success)
-            {
-                echo '<div class="alert">
-                <center><b>Money Deposited Succesfully!!</b></center>
-            </div>';
-            }
-            else if($invalidAmount)
+<?php
+            
+            if($insuff)
             {
                 echo '<div class="alert">
                 <center><b>Invalid Amount</b></center>
             </div>';
             }
-    ?> -->
+          
+            else if($usernf)
+            {
+                echo '<div class="alert">
+                <center><b>User Not Found</b></center>
+            </div>';
+            }
+            else  if($error)
+            {
+                echo '<div class="alert">
+                <center><b>Unexpected error</b></center>
+            </div>';
+            }
+           else  if($success)
+            {
+                echo '<div class="alert">
+                <center><b>Money Deposited Succesfully!!</b></center>
+            </div>';
+            }
+
+    ?> 
     <div class="title">Transfer Money</div>
     <div class="content">
         <form action="transferMoney.php" method="post">
