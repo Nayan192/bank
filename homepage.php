@@ -42,7 +42,7 @@
                   </div>
                   <div class="col-md act">
                     <br>
-                    <a href="transactionHistory.php"><button style="background-color : #2785C4;">Transaction History</button></a>
+                    <a href="transferHistory.php"><button style="background-color : #2785C4;">Transaction History</button></a>
                   </div>
                   <div class="col-md act">
                     <br>
