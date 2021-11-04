@@ -17,15 +17,16 @@
         $currbalance= $row['balance'] ;//current balance of benefeciary
         $newbalance=$currbalance+$amount;//new balance of benefeciary 
         $num=mysqli_num_rows($result);
-        if($result&&$num==1&& $userid!=$owner)
+        $sql3="SELECT * FROM `user` WHERE `userid`='$owner'";
+        $result3=mysqli_query($conn,$sql3);
+        $row3 = mysqli_fetch_assoc($result3);
+        $currbalance3= $row3['balance'] ;//current balance of owner
+        if($result&&$num==1&& $userid!=$owner&&$currbalance>=$amount&& $amount>=1)
         {
           $transferMoney="UPDATE `user` SET `balance` = '$newbalance' WHERE `user`.`userid` = $userid;";//transfer money to benefeciary
           $tresult=mysqli_query($conn,$transferMoney);
          
-          $sql3="SELECT * FROM `user` WHERE `userid`='$owner'";
-          $result3=mysqli_query($conn,$sql3);
-          $row3 = mysqli_fetch_assoc($result3);
-          $currbalance3= $row3['balance'] ;//current balance of owner
+      
           $newbalance3=$currbalance3-$amount;//new balance of owner
           $transferMoney2="UPDATE `user` SET `balance` = '$newbalance3' WHERE `user`.`userid` = $owner;";//deductuon money from owner
           $tresult2=mysqli_query($conn,$transferMoney2);
@@ -47,7 +48,7 @@
         }
         
         else {
-            echo " user not found";
+            echo "User not found or insufficient balance ";
         }
         
     }
