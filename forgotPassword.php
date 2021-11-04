@@ -1,6 +1,7 @@
 <?php
     session_start();// isset checks if variable is set or not
-    
+    $login=false;
+    $notlogin=false;
     if($_SERVER["REQUEST_METHOD"]=="POST")
     {
         include 'partials/_dbconnect.php';
@@ -10,14 +11,14 @@
         $result=mysqli_query($conn,$sql);
         if($result)
         {
-            echo"password changed";
+          $login=true;
         }
-        else
-        {
-            echo "error";
-         }
+        else{
+            $notlogin=true;
         }
-        ?>
+
+    }
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,6 +31,20 @@
 <body>
 <form action="forgotpassword.php" method="post">
     <div class="form">
+    <?php
+        if($login)
+        {
+            echo '<div class="alert">
+            <center>Password changed Succesfully
+            <a href=index.php class="closebtn">Click here to login</a></center>
+          </div>';
+        }
+        else if($notlogin) {
+            echo '<div class="alert">
+            <center>User Not Found</center>
+          </div>';
+        }
+        ?>
             <center>
             <div class="title">Reset Password</div>
             </center>
@@ -48,5 +63,4 @@
     </form>
 </body>
 </html>
-
 
