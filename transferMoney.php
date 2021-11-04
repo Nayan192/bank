@@ -1,9 +1,11 @@
 
 <?php
     session_start();// isset checks if variable is set or not
-    $success=false;
-    $invalidAmount=false;
-    $invalidUser=false;
+    if(!isset($_SESSION['loggedin']) ||$_SESSION['loggedin']!=true){
+        header("location:index.php");
+        exit;
+    }
+    
     if($_SERVER["REQUEST_METHOD"]=="POST")
     {
         include 'partials/_dbconnect.php';
@@ -33,18 +35,21 @@
           {
               $sql4="INSERT INTO `tranferhistory` (`buserid`, `amount`, `balance`, `owner`) VALUES ('$userid', '$amount', '$newbalance3', '$owner');";//insert into new balance table
               $result4=mysqli_query($conn,$sql4);
-              $num=mysqli_num_rows($result4);
               if($result4)
               {
-                  $success=true;
+                  echo "money transfered succesfull";
               }
               else{
-                $invalidUser=true;
+                  echo " error";
               }
           }
+          else{
+              echo "some error";
+          }
         }
+        
         else {
-            $invalidAmount=true;
+            echo "User not found or insufficient balance ";
         }
         
     }
@@ -62,20 +67,20 @@
 </head>
 <body> 
 <div class="container">
-<?php
+<!-- <?php
             if($success)
             {
                 echo '<div class="alert">
-                <center><b>Money Transferred Succesfully!!</b></center>
+                <center><b>Money Deposited Succesfully!!</b></center>
             </div>';
             }
             else if($invalidAmount)
             {
                 echo '<div class="alert">
-                <center><b>User Not Found Or Invalid Amount</b></center>
+                <center><b>Invalid Amount</b></center>
             </div>';
             }
-    ?>
+    ?> -->
     <div class="title">Transfer Money</div>
     <div class="content">
         <form action="transferMoney.php" method="post">
