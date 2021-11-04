@@ -8,8 +8,10 @@
         $userid=$_POST["userid"];// user id of owner
         $password=$_POST["password"];// new password 
         $sql="UPDATE `user` SET `password` = '$password' WHERE `user`.`userid` = $userid;";
+   
         $result=mysqli_query($conn,$sql);
-        if($result)
+        $num=mysqli_num_rows($result);
+        if($num==1)
         {
           $login=true;
         }
@@ -63,4 +65,3 @@
     </form>
 </body>
 </html>
-
