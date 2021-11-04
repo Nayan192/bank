@@ -1,3 +1,22 @@
+<?php
+$delete=false;
+session_start();
+include 'partials/_dbconnect.php';
+$owner=$_SESSION['userid'];//user id of owner of account
+$sql="DELETE FROM `user` WHERE `user`.`userid` = $owner";
+$result=mysqli_query($conn,$sql);
+if($result)
+{
+    echo "account deleted";
+    session_unset();
+    session_destroy();
+    header("location:index.php");
+    exit;
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,5 +30,6 @@
 <body>
 <?php require 'partials/navbar.php'?>
     <h1>DELETE</h1>
+
 </body>
 </html>
