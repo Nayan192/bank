@@ -1,15 +1,32 @@
 <?php
 include 'partials/_dbconnect.php';
 session_start();// isset checks if variable is set or not
-if(!isset($_SESSION['loggedin']) ||$_SESSION['loggedin']!=true){
-    header("location:index.php");
-    exit;
-    $userid=$_SESSION['userid'];
-    $sql="SELECT * FROM `user` WHERE `userid`='userid'";
-    $result=mysqli_query($conn,$sql);
-    $row = mysqli_fetch_assoc($result);
-    $currbalance= $row['balance'] ;//current balance of benefeciary
+if($_SERVER["REQUEST_METHOD"]=="POST")
+    {
+$owner=$_SESSION['userid'];//user id of owner of account
+$amount=$_POST["amount"];// amount to be added
+$sql3="SELECT * FROM `user` WHERE `userid`='$owner'";
+        $result3=mysqli_query($conn,$sql3);
+        $row3 = mysqli_fetch_assoc($result3);
+        $currbalance3= $row3['balance'] ;//current balance of owner
+        $newbalance=$currbalance3+$amount;//new balance of user
+        if($newbalance<=100000000&&$amount>=1)
+        {
+$sql="UPDATE `user` SET `balance` = '$newbalance' WHERE `user`.`userid` = $owner;";
+$result=mysqli_query($conn,$sql);
+if($result)
+{
+    echo "money added succesfully";
 }
+else{
+    echo "error";
+}
+        }
+        else{
+            echo "please enter valid amount ";
+        }
+    }
+
 
 ?>
 <!DOCTYPE html>
@@ -21,6 +38,15 @@ if(!isset($_SESSION['loggedin']) ||$_SESSION['loggedin']!=true){
     <title>Document</title>
 </head>
 <body>
-    
+<form action="addmoney.php" method="post">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">amount </span>
+                    <input class="input" type="amount" name="amount" id="amount" required>
+                </div>
+                
+                <button class="submit" type="submit">SUBMIT</button>
+            </div>
+        </form>
 </body>
 </html>
