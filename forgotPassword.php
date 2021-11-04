@@ -41,7 +41,7 @@
             <div class="input-container ic2">
                 <input type="password" class="input" name="password" id="password" placeholder=" " required>   
                 <div class="cut"></div>
-                <label for="password" class="placeholder">PASSWORD</label> 
+                <label for="password" class="placeholder">NEW PASSWORD</label> 
             </div>
                 <button class="submit" type="submit" >RESET</button><br><br>
             </div>
