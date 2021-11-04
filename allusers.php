@@ -21,6 +21,7 @@
                 <th class="text-center">First Name</th>
                 <th class="text-center">Last Name</th>
                 <th class="text-center">Age</th>
+                <th class="text-center">Gender</th>
                 <th class="text-center">E-Mail</th>
                 <th class="text-center">City</th>
             </tr>
