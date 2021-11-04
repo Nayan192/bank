@@ -1,23 +1,35 @@
 <?php
     session_start();// isset checks if variable is set or not
-    $login=false;
-    $notlogin=false;
+    $passchanged=false;
+    $nouser=false;
     if($_SERVER["REQUEST_METHOD"]=="POST")
     {
         include 'partials/_dbconnect.php';
         $userid=$_POST["userid"];// user id of owner
         $password=$_POST["password"];// new password 
+        $sql2="SELECT * FROM `user` WHERE `userid`='$userid'";
+        $result2=mysqli_query($conn,$sql2);
+        $num=mysqli_num_rows($result2);
+        if($num==1)
+        {
+       
         $sql="UPDATE `user` SET `password` = '$password' WHERE `user`.`userid` = $userid;";
    
         $result=mysqli_query($conn,$sql);
-        $num=mysqli_num_rows($result);
-        if($num==1)
-        {
-          $login=true;
-        }
-        else{
-            $notlogin=true;
-        }
+
+      if($result)
+      {
+          echo "pasword changes succesfully";
+          $passchanged=true;
+      }
+      else{
+          echo " unexpected error";
+      }
+      
+    }
+    else{
+        $nouser=true;
+    }
 
     }
     ?>
@@ -34,14 +46,14 @@
 <form action="forgotpassword.php" method="post">
     <div class="form">
     <?php
-        if($login)
+        if($passchanged)
         {
             echo '<div class="alert">
             <center>Password changed Succesfully
             <a href=index.php class="closebtn">Click here to login</a></center>
           </div>';
         }
-        else if($notlogin) {
+        else if($nouser) {
             echo '<div class="alert">
             <center>User Not Found</center>
           </div>';
