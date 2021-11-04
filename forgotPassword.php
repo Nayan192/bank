@@ -1,9 +1,6 @@
 <?php
     session_start();// isset checks if variable is set or not
-    if(!isset($_SESSION['loggedin']) ||$_SESSION['loggedin']!=true){
-        header("location:index.php");
-        exit;
-    }
+ 
     if($_SERVER["REQUEST_METHOD"]=="POST")
     {
         include 'partials/_dbconnect.php';
