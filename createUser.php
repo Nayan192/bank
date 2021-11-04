@@ -16,7 +16,7 @@
         $check="SELECT * FROM `user` WHERE `phone`='$phone'";
         $r=mysqli_query($conn,$check);
         $numc=mysqli_num_rows($r);
-        if($numc==0&&$balance>=1&&$balance<=100000000)
+        if($numc==0)
         {
         //$sql ="INSERT INTO `DshHNFZcBN`. `user` ( `userid`,`firstname`, `lastname`, `age`, `gender`, `phone`, `email`, `city`,`date`) VALUES ( NULL,'$firstname', '$lastname', '$age', '$gender', '$phone', '$email', '$city', CURRENT_TIMESTAMP); "; 
         $sql="INSERT INTO `user` (`userid`, `firstname`, `lastname`, `age`, `gender`, `phone`, `email`, `city`, `date`,`balance`, `password`) VALUES (NULL,'$firstname', '$lastname', '$age', '$gender', '$phone', '$email', '$city', CURRENT_TIMESTAMP,'$balance', '$password');" ;
