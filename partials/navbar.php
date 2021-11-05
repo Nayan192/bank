@@ -36,6 +36,7 @@
         <a class="nav-link" href="deleteAccount.php">Delete Account</a>
       </li>
     </ul>
+    
     <form class="form-inline my-2 my-lg-0">
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a href="logout.php">LOG OUT</a></button>
     </form>
