@@ -49,7 +49,18 @@
                     ?>
         </tbody>
     </table>
+    <?php
+    include 'partials/_dbconnect.php';
+    $userid=$_SESSION['userid'];
+    $sql1 ="SELECT * FROM `recivedmoney` WHERE `userid`='$userid';";
+    $r=mysqli_query($conn,$sql1);
+    $num1=mysqli_num_rows($r);
+    while($row = mysqli_fetch_assoc($r)){
+        echo $row['recived from'];
+        echo $row['amount'];
+    }
 
+    ?>
     </div>
 </div>
 </body>
