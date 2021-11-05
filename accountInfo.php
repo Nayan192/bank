@@ -6,44 +6,70 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/allusers.css">
+    <title>Account information</title>
 </head>
 <body>
- <?php require 'partials/navbar.php'?>
-    <h1>Account Info</h1>
-    <?php
-   session_start();
-   include 'partials/_dbconnect.php';
-   $owner=$_SESSION['userid'];//user id of owner of account
-   $sql="SELECT * FROM `user` WHERE `userid`='$owner'";
-   $result=mysqli_query($conn,$sql);
-   $num=mysqli_num_rows($result);
-   if($num==1)
-   {
-   $row = mysqli_fetch_assoc($result);
-   echo $row['userid'];
-   echo "<br>";
-   echo $row['firstname'];
-   echo "<br>";
-   echo $row['lastname'];
-   echo "<br>";
-   echo $row['age'];
-   echo "<br>";
-   echo $row['gender'];
-   echo "<br>";
-   echo $row['phone'];
-   echo "<br>";
-   echo $row['email'];
-   echo "<br>";
-   echo $row['city'];
-   echo "<br>";
-   echo $row['balance'];
-   }
-   else{
-       echo "unexpected error";
-   }
-
-
-?>
+<?php require 'partials/navbar.php'?>
+<div class="container">
+    <h2 class="text-center pt-4" style="color : black;">Registered Users</h2>
+    <div class="table-responsive-sm">
+    <table class="table table-hover table-striped table-condensed table-bordered">
+        <tbody>
+            <?php
+                session_start();
+                include 'partials/_dbconnect.php';
+                $owner=$_SESSION['userid'];//user id of owner of account
+                $sql="SELECT * FROM `user` WHERE `userid`='$owner'";
+                $result=mysqli_query($conn,$sql);
+                $num=mysqli_num_rows($result);
+                if($row = mysqli_fetch_assoc($result))
+                {
+                    ?>
+                    <tr>
+                            <th class="text-center">User Id</th>
+                            <td class="py-2"><?php echo $row['userid'];?></td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">First Name</th>
+                            <td class="py-2"><?php echo $row['firstname'];?></td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">Last Name</th>
+                            <td class="py-2"><?php echo $row['lastname'];?></td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">Age</th>
+                            <td class="py-2"><?php echo $row['age'];?></td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">Gender</th>
+                            <td class="py-2"><?php echo $row['gender'];?></td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">Phone</th>
+                            <td class="py-2"><?php echo $row['phone'];?></td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">Email</th>   
+                            <td class="py-2"><?php echo $row['email'];?></td>
+                        </tr>
+                            <th class="text-center">City</th>
+                            <td class="py-2"><?php echo $row['city'];?></td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">Balance</th>
+                            <td class="py-2"><?php echo $row['balance'];?></td>
+                        </tr>
+                        <?php
+                            }
+                            else{
+                                echo "unexpected error";
+                            }
+                    ?>
+        </tbody>
+    </table>
+</div>
+</div>
 </body>
 </html>

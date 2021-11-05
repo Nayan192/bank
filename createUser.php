@@ -48,11 +48,10 @@
     <?php
         if($s)
         {
-            echo
-            'Account Created Succesfully
-            Your User Id is'.$userid;
-          
-        
+            echo '
+            Account Created Succesfully,
+            Your User Id is&nbsp&nbsp';echo '<b>' .$userid.'</b>';
+            echo '&nbsp&nbsp<a href=index.php >Click here to login</a>'; 
         }
     ?>
     <div class="title">Registration</div>

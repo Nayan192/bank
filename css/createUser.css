@@ -25,7 +25,7 @@ body{
       border-radius:10px ;
     padding: 20px;
     background-color: #970a00; /* Red */
-    color: white;
+    color: rgb(7, 7, 7);
     margin-bottom: 15px;
   }
 .container .title{
