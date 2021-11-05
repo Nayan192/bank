@@ -82,7 +82,7 @@
         </div>
          <div class="input-box">
              <span class="details">Phone</span>
-            <input class="input" type="phone" name="phone" id="phone" placeholder="Enter your phone" required>
+            <input class="input" type="phone" name="phone" id="phone" placeholder="Enter 10 digit phone number" required>
         </div>
         <div class="input-box">
             <span class="details">E-Mail</span>
@@ -94,7 +94,7 @@
         </div>
         <div class="input-box">
             <span class="details">Balance</span>
-            <input class="input" type="balance" name="balance" id="balance" placeholder="Enter your balance" required>
+            <input class="input" type="balance" name="balance" id="balance" placeholder="Enter your balance (less than 1 crore)" required>
         </div>
         <div class="input-box">
             <span class="details">Password</span>
