@@ -49,18 +49,35 @@
                     ?>
         </tbody>
     </table>
+                    </div>
+    <h2 class="text-center pt-4" style="color : black;">Received History</h2>
+       <div class="table-responsive-sm">
+    <table class="table table-hover table-striped table-condensed table-bordered">
+            <thead style="color : black;">
+                <tr>
+                    <th class="text-center">Received From</th>
+                    <th class="text-center">Amount Received</th>
+                </tr>
+            </thead>
+            <tbody>
     <?php
-    include 'partials/_dbconnect.php';
-    $userid=$_SESSION['userid'];
-    $sql1 ="SELECT * FROM `recivedmoney` WHERE `userid`='$userid';";
-    $r=mysqli_query($conn,$sql1);
-    $num1=mysqli_num_rows($r);
-    while($row = mysqli_fetch_assoc($r)){
-        echo $row['recived from'];
-        echo $row['amount'];
-    }
-
-    ?>
+            include 'partials/_dbconnect.php';
+            $userid=$_SESSION['userid'];
+            $sql1 ="SELECT * FROM `recivedmoney` WHERE `userid`='$userid';";
+            $r=mysqli_query($conn,$sql1);
+            $num1=mysqli_num_rows($r);
+            while($row = mysqli_fetch_assoc($r))
+            {
+            ?>
+            <tr>
+                <td class="py-2"><?php echo $row['recived from'];?></td>
+                <td class="py-2"><?php echo $row['amount'];?></td>
+            </tr>
+            <?php
+                }
+            ?>
+            </tbody>
+    </table>
     </div>
 </div>
 </body>

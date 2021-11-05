@@ -40,12 +40,11 @@
           {
               $sql4="INSERT INTO `tranferhistory` (`buserid`, `amount`, `balance`, `owner`) VALUES ('$userid', '$amount', '$newbalance3', '$owner');";//insert into new balance table
               $result4=mysqli_query($conn,$sql4);
-              
               if($result4)
               {
                   $success=true;
                   $sql5="INSERT INTO `recivedmoney` (`recived from`, `amount`, `userid`) VALUES ('$owner', '$amount', '$userid');";
-              $p=mysqli_query($conn,$sql5);
+                    $p=mysqli_query($conn,$sql5);
               }
               else{
                   $error =true;
@@ -75,10 +74,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/createUser.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/addmoney.css">
     <title>Transfer Funds</title>
 </head>
 <body> 
+<?php require 'partials/navbar.php'?>
+<div class="main-body">  
 <div class="container">
 <?php
             
@@ -125,6 +127,7 @@
             </div>
         </form>
     </div>
+</div>
 </div>    
 </body>
 </html>
