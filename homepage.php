@@ -24,28 +24,35 @@
             <div class="row intro py-1" style="background-color : #82E0AA;">
               <div class="col-sm-12 col-md">
                 <div class="heading text-center my-5">
-                  <h3>Welcome to</h3>
-                  <h1>-- BANK</h1>
+                  <h2>Welcome to</h2>
+                  <h1>Development Bank</h1>
                 </div>
               </div>
+              <div class="col-sm-12 col-md img text-center">
+                <img src="images/bank.png" class="img-fluid pt-2">
+              </div>
             </div>
-
+          <br>
       <!-- Activity section -->
             <div class="row activity text-center">
                   <div class="col-md act">
-                    <br>
+                  <img src="images/user1.jpeg" class="img-fluid">
+                    <br> <br>
                     <a href="allusers.php"><button style="background-color : #2785C4;">Registered Users</button></a>
                   </div>
                   <div class="col-md act">
-                    <br>
+                  <img src="images/transaction.png" class="img-fluid">
+                    <br><br>
                     <a href="transferMoney.php"><button style="background-color : #2785C4;">Make a Transaction</button></a>
                   </div>
                   <div class="col-md act">
-                    <br>
+                  <img src="images/history.jpg" class="img-fluid">
+                    <br><br>
                     <a href="transferHistory.php"><button style="background-color : #2785C4;">Transaction History</button></a>
                   </div>
                   <div class="col-md act">
-                    <br>
+                  <img src="images/deposit.jpg" class="img-fluid">
+                    <br><br>
                     <a href="addmoney.php"><button style="background-color : #2785C4;">Deposit Money</button></a>
                   </div>
             </div>

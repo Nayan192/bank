@@ -1,3 +1,4 @@
+
 <?php
 include 'partials/_dbconnect.php';
 session_start();// isset checks if variable is set or not
@@ -34,10 +35,12 @@ $invalidAmount=false;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css/createUser.css">
+    <link rel="stylesheet" type="text/css" href="css/addmoney.css">
     <title>Deposit Money</title>
 </head>
 <body>
+<?php require 'partials/navbar.php'?>
+    <div class=main-body>
 <div class="container">
     <?php
             if($success)
@@ -70,5 +73,6 @@ $invalidAmount=false;
             </form>
         </div>
 </div>
+        </div>
 </body>
 </html>

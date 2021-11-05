@@ -2,6 +2,7 @@
     session_start();// isset checks if variable is set or not
     $passchanged=false;
     $nouser=false;
+    $error=false;
     if($_SERVER["REQUEST_METHOD"]=="POST")
     {
         include 'partials/_dbconnect.php';
@@ -19,11 +20,10 @@
 
       if($result)
       {
-          echo "pasword changes succesfully";
           $passchanged=true;
       }
       else{
-          echo " unexpected error";
+         $error=true;
       }
       
     }
@@ -49,11 +49,11 @@
         if($passchanged)
         {
             echo '<div class="alert">
-            <center>Password changed Succesfully
+            <center>Password changed Succesfully<br>
             <a href=index.php class="closebtn">Click here to login</a></center>
           </div>';
         }
-        else if($nouser) {
+        else if($nouser||$error) {
             echo '<div class="alert">
             <center>User Not Found</center>
           </div>';

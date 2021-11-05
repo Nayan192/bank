@@ -55,7 +55,7 @@
         <div class="input-container ic2">
             <input type="password" class="input" name="password" id="password" placeholder=" " required>   
             <div class="cut"></div>
-            <label for="password" class="placeholder">PASSWORD</label> 
+            <label for="password" class="placeholder">PASSWORD</label>
             <a href="forgotPassword.php" class="fpw">Forgot Password?</a>
         </div>
             <button class="submit" type="submit" >LOGIN</button><br><br>
